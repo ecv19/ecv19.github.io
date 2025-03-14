@@ -1,0 +1,349 @@
+/* ==================================================================
+   Basic Reset
+   ================================================================== */
+   * {
+    margin: 0;                /* Remove default margin */
+    padding: 0;               /* Remove default padding */
+    box-sizing: border-box;   /* Use border-box sizing for easier layout */
+  }
+  
+  /* ==================================================================
+     Global Body Styles
+     ================================================================== */
+  body {
+    font-family: 'Inconsolata', monospace;  /* Set the global font */
+    background-color: #ffffff;              /* White background */
+    color: #333;                            /* Dark gray text color */
+    display: flex;                          /* Use flexbox for layout */
+    flex-direction: column;                 /* Stack children vertically */
+    min-height: 100vh;                      /* Ensure body takes full viewport height */
+    position: relative;                     /* Needed for absolutely positioned children */
+    /* Removed overflow: hidden; to allow scrolling */
+  }
+  
+  /* ==================================================================
+     Particles Background
+     ================================================================== */
+  #particles-js {
+    position: absolute;  /* Positioned relative to body */
+    width: 100%;         /* Full width */
+    height: 100%;        /* Full height */
+    z-index: -1;         /* Place behind everything */
+    top: 0;              /* Top edge at 0 */
+    left: 0;             /* Left edge at 0 */
+  }
+  
+  /* ==================================================================
+     Top Navigation Styles
+     ================================================================== */
+  header {
+    background-color: rgba(244,244,244,0.9); /* Semi-transparent light background */
+    display: flex;                           /* Use flexbox for layout */
+    justify-content: space-between;          /* Space between left/right items */
+    align-items: center;                     /* Vertically center items */
+    padding: 0.75rem 3.5rem;                  /* Padding inside header */
+    position: fixed;                         /* Fix header to viewport */
+    top: 0;                                  /* Position at top */
+    left: 0;                                 /* Left edge */
+    right: 0;                                /* Right edge */
+    z-index: 35;                             /* Ensure header stays above other content */
+  }
+  
+  header .email {
+    color: #666;      /* Medium gray for email text */
+    font-size: 0.9rem; /* Slightly smaller font size */
+  }
+  
+  header a {
+    color: #666;           /* Medium gray for nav links */
+    text-decoration: none; /* Remove underline */
+    margin-left: 2rem;     /* Space between links */
+    font-size: 0.9rem;     /* Small font size */
+    font-weight: 300;      /* Light font weight */
+  }
+  
+  header a:hover {
+    color: #e93e8d; /* Change color on hover */
+  }
+  
+  /* Increase font size for navigation links in top nav */
+  header .nav-right a {
+    font-size: 1rem;
+  }
+  
+  /* ==================================================================
+     Main Content Styles
+     ================================================================== */
+  main {
+    flex: 1;                           /* Allow main content to grow */
+    display: flex;                     /* Use flexbox for main content */
+    flex-direction: column;            /* Stack children vertically */
+    justify-content: center;           /* Center content vertically */
+    align-items: center;               /* Center content horizontally */
+    text-align: center;                /* Center text */
+    padding: 2rem;                     /* Padding around main content */
+    position: relative;                /* Relative for stacking context */
+    z-index: 1;                        /* Lower than header */
+  }
+  
+  main h1 {
+    font-size: 2.5rem;  /* Large heading font size */
+    font-weight: 400;   /* Normal weight */
+    margin-bottom: 1rem;/* Space below heading */
+    color: #151515;     /* Very dark gray color */
+  }
+  
+  /* ==================================================================
+     Social Links Styles
+     ================================================================== */
+  .social-links {
+    display: flex;        /* Horizontal layout for social icons */
+    gap: 1.5rem;          /* Space between icons */
+    margin-top: 1rem;     /* Top margin */
+  }
+  
+  .social-links a {
+    color: #666;             /* Medium gray icons */
+    text-decoration: none;   /* Remove underline */
+    font-size: 1.75rem;      /* Icon size */
+    transition: color 0.3s ease;  /* Smooth color transition */
+  }
+  
+  .social-links a:hover {
+    color: #40a5ca; /* Change icon color on hover */
+  }
+  
+  /* ==================================================================
+     Footer Styles
+     ================================================================== */
+  footer {
+    background-color: rgba(244,244,244,0.9);  /* Footer background color */
+    text-align: center;                       /* Center footer text */
+    padding: 0.50rem;                         /* Padding in footer */
+    position: relative;                       /* Normal positioning */
+    z-index: 3;                               /* Lower stacking order */
+  }
+  
+  footer p {
+    margin-top: 0.5rem; /* Adds space above the paragraph */
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+  
+  /* ==================================================================
+     Home Path (esau@home ~ $) Styles
+     ================================================================== */
+  .home-path {
+    font-family: 'Inconsolata', monospace;  /* Use same font as body */
+    font-size: 1rem;                        /* Base font size */
+    color: #333;                            /* Dark text */
+    text-decoration: none;                  /* No underline */
+    background-color: #eaeaea;              /* Light gray background */
+    border: 1px solid #ccc;                 /* Border around the box */
+    padding: 5px 10px;                      /* Padding inside box */
+    border-radius: 4px;                     /* Rounded corners */
+    position: relative;                     /* Position relative for pseudo-element */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+  }
+  
+  .home-path:hover {
+    background-color: #dcdcdc; /* Slightly darker on hover */
+  }
+  
+  .home-path::after {
+    content: '|';             /* Adds a pipe symbol after the text */
+    margin-left: 5px;         /* Spacing between text and symbol */
+    animation: blink 1s infinite;  /* Blinking animation */
+    color: #e93e8d;           /* Color for the blinking cursor */
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }   /* Visible for half the time */
+    50%, 100% { opacity: 0; } /* Hidden for half the time */
+  }
+  
+  /* ==================================================================
+     Intro Section Styles
+     ================================================================== */
+  .intro {
+    display: flex;                   /* Layout as a horizontal row */
+    align-items: flex-start;         /* Align items to the top */
+    gap: 2rem;                       /* Gap between image and text */
+    padding: 2rem;                   /* Padding around the intro section */
+    max-width: 1000px;               /* Maximum width of intro */
+    margin: 0 auto;                  /* Center the intro section */
+    color: #444444;                  /* Specific font color for intro text */
+    font-weight: 200;                /* Light font weight for intro text */
+  }
+  
+  .intro-image {
+    flex-shrink: 0;                  /* Prevent image from shrinking */
+  }
+  
+  .intro-image img {
+    width: 310px;                    /* Set image width */
+    border-radius: 5%;               /* Slightly round the image corners */
+  }
+  
+  .intro-text {
+    flex: 1;                         /* Allow text container to take remaining space */
+    text-align: justify;             /* Justify text for neat alignment */
+    max-width: 500px;                /* Restrict the width of text */
+    margin: 0 auto;                  /* Center text container */
+    color: inherit;                  /* Inherit color from .intro */
+    font-weight: inherit;            /* Inherit font weight from .intro */
+  }
+  
+  .intro-text h1 {
+    text-align: center;
+    font-family: 'Oxanium', sans-serif; /* Apply the Share font only to the header */
+    font-size: 2.2rem;                /* Adjust font size for emphasis */
+    font-weight: 500;                 /* Make it bold */
+    margin-bottom: 0.5rem;            /* Space below the header */
+  }
+  
+  p {
+    margin-bottom: 0.9rem;             /* Space below paragraphs */
+  }
+  
+  /* ==================================================================
+     Publications Accordion Styles
+     ================================================================== */
+  /* (No styles provided) */
+  
+  /* ==================================================================
+     Projects Section
+     ================================================================== */
+  
+  /* -------- Projects Container -------- */
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 550px; /* Forces each row to be 550px tall */
+    gap: 25px;
+    justify-content: center;
+    align-items: start;
+    align-content: start;  /* Ensures grid rows stack at the top */
+    padding: 0 20px 50px;  /* No extra top padding */
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  /* -------- Project Cards -------- */
+  .project-card {
+    width: 360px;
+    height: 550px; /* Increased height for more content space */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .project-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .project-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+  
+  /* -------- Image Container -------- */
+  .project-image-container {
+    width: 100%;           /* Full width of the card */
+    height: 220px;         /* Increased container height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;   /* Space between image and description */
+  }
+  
+  .project-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* Ensures the whole image is visible */
+    filter: grayscale(100%);
+    transition: filter 0.3s ease-in-out;
+  }
+  
+  .project-card:hover .project-image-container img {
+    filter: grayscale(0%);
+  }
+  
+  /* -------- Project Description -------- */
+  .project-description {
+    font-size: 0.9rem;
+    color: #444444;
+    font-weight: 200; 
+    text-align: justify;
+    padding: 0 15px;
+    flex-grow: 5; /* Takes available vertical space */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  
+  /* -------- "More" Button -------- */
+  .more-button {
+    margin-top: auto;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #e93e8d;
+    color: white;
+    padding: 12px 80px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .more-button:hover {
+    background-color: #d82c7d;
+  }
+  
+  /* -------- Projects Intro -------- */
+  .projects-intro {
+    flex: 1;
+    text-align: justify;
+    max-width: 900px;
+    color: inherit;
+    font-weight: inherit;
+    padding: 0 1rem;
+    margin-top: 5rem; /* Pushes the header/description down */
+  }
+  
+  .projects-intro h1 {
+    text-align: center;
+    margin-bottom: 1rem;             /* Spacing between header and description */
+    font-family: 'Oxanium', sans-serif; /* Apply the Share font only to the header */
+    font-size: 2.2rem;                /* Adjust font size for emphasis */
+    font-weight: 500;                 /* Make it bold */
+  }
+  
+  .projects-intro p {
+    font-size: 1rem;                 /* Description font size */
+    line-height: 1.25;                /* Improve readability */
+    margin-bottom: 3rem;
+    color: #444444;
+    font-weight: 200; 
+  }
+  
+  /* ==================================================================
+     Custom Link Styles
+     ================================================================== */
+  .custom-link {
+    color: #0d99cb; /* Preferred link color */
+    text-decoration: none;
+    font-weight: 400;
+  }
+  

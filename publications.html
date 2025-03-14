@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ========================================================= -->
+    <!-- Meta Information -->
+    <!-- ========================================================= -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Publications Accordion</title>
+
+    <!-- ========================================================= -->
+    <!-- Google Fonts -->
+    <!-- ========================================================= -->
+    <!-- Primary Font: Inconsolata -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Additional Fonts: Oxanium, Share, Chakra Petch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Share&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ========================================================= -->
+    <!-- FontAwesome for Icons -->
+    <!-- ========================================================= -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- ========================================================= -->
+    <!-- Internal CSS Styles -->
+    <!-- ========================================================= -->
+    <style>
+      /* ==================================================================
+         Basic Reset
+         ================================================================== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      /* ==================================================================
+         Global Body Styles
+         ================================================================== */
+      body {
+        font-family: 'Inconsolata', monospace;
+        background-color: #ffffff;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden; /* Prevents the whole page from scrolling */
+      }
+      
+      /* ==================================================================
+         Particles Background
+         ================================================================== */
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        top: 0;
+        left: 0;
+      }
+      
+      /* ==================================================================
+         Top Navigation Styles
+         ================================================================== */
+      header.top-nav {
+        background-color: rgba(244,244,244,0.9);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 3.5rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 35;
+      }
+      header.top-nav .nav-left a,
+      header.top-nav .nav-right a {
+        text-decoration: none;
+        color: #666;
+        margin-left: 2rem;
+        font-size: 1rem;
+        font-weight: 300;
+      }
+      header.top-nav a:hover {
+        color: #e93e8d;
+      }
+      
+      /* Home Path Button */
+      header.top-nav .nav-left a.home-path {
+        background-color: #eaeaea;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+      header.top-nav .nav-left a.home-path:hover {
+        background-color: #dcdcdc;
+      }
+      header.top-nav .nav-left a.home-path::after {
+        content: '|';
+        margin-left: 5px;
+        animation: blink 1s infinite;
+        color: #e93e8d;
+      }
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      
+      /* ==================================================================
+         Footer Styles
+         ================================================================== */
+      footer {
+        background-color: rgba(244,244,244,0.9);
+        text-align: center;
+        padding: 1.2rem;
+        position: fixed; /* Fixed at bottom */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+      }
+      footer p {
+        transform: translateY(-0.28rem);
+        color: #666;
+        font-size: 0.9rem;
+        font-weight: 300;
+      }
+      
+      /* ==================================================================
+         Publications Accordion Styles
+         ================================================================== */
+      
+      /* Fixed Header for Publications */
+      .fixed-header {
+        position: fixed;
+        top: 100px;
+        left: 10px;
+        right: 10px;
+        background: white;
+        z-index: 1000;
+        padding: 1rem;
+        text-align: center;
+      }
+      .fixed-header h1 {
+        font-family: 'Oxanium', sans-serif; /* Apply the Oxanium font */
+        font-weight: 500;
+        font-size: 2rem;
+      }
+      
+      /* Main Content Area */
+      main {
+        margin-top: 150px; /* Space for top nav + fixed header */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+      }
+      
+      /* Publications / Accordion Container */
+      .publications {
+        width: 60%;  /* Increase width from default */
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      /* Scrollable Accordion Content */
+      .accordion-content {
+        width: 100%;
+        height: calc(100vh - 200px);
+        overflow-y: auto;
+      }
+      
+      /* Accordion Details Animation */
+      .accordion-content details[open] summary ~ * {
+        animation: open 0.7s ease-in-out;
+      }
+      @keyframes open {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+      
+      /* Remove Default Marker from Summary */
+      .accordion-content details summary::-webkit-details-marker {
+        display: none;
+      }
+      
+      /* Summary Styling */
+      .accordion-content details summary {
+        width: 100%;
+        padding: 0.5rem 0;
+        border-top: 1px solid black;
+        position: relative;
+        cursor: pointer;
+        font-size: 1.45rem;
+        font-weight: 200;
+        list-style: none;
+        outline: 0;
+        margin-bottom: 0.8rem;
+      }
+      
+      /* Summary Icon */
+      .accordion-content details summary:after {
+        content: "+";
+        color: #e93e8d;
+        position: absolute;
+        font-size: 2rem;
+        line-height: 0;
+        margin-top: 0.75rem;
+        right: 10px;
+        font-weight: 200;
+        transform-origin: center;
+        transition: 200ms linear;
+      }
+      .accordion-content details[open] summary:after {
+        transform: rotate(45deg);
+      }
+      
+      /* Paragraph Styling in Accordion */
+      .accordion-content details p {
+        font-size: 0.95rem;
+        margin: 0 0 1rem;
+        padding-top: 1rem;
+      }
+      
+      /* Publication Buttons */
+      .publication-buttons {
+        margin-top: 0.5rem;
+      }
+      .button {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin-right: 0.5rem;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+      }
+      .button.available {
+        background-color: #e93e8d;
+        color: #fff;
+      }
+      .button.available:hover {
+        background-color: #d82c7d;
+      }
+      .button.unavailable {
+        background-color: #ccc;
+        color: #666;
+        pointer-events: none;
+      }
+      
+      /* Publication List Styles */
+      .publication-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+        margin-top: 1.25rem;
+      }
+      .publication-list li {
+        margin-bottom: 1rem;
+      }
+      
+      /* Publication Title & Metadata */
+      .pub-title {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+        color: #000000;
+      }
+      .pub-meta {
+        font-size: 0.9rem;
+        color: #666;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        margin-top: 0.3rem;
+      }
+      
+      /* DOI Text Styles */
+      .doi-text {
+        font-family: 'Chakra Petch', sans-serif;
+        font-weight: 400;
+        color: #666;
+        transition: color 0.0s ease;
+      }
+      .doi-text:hover {
+        color: #0d99cb;
+      }
+      .doi-text a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.0s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========================================================= -->
+    <!-- Particle Background Container -->
+    <!-- ========================================================= -->
+    <div id="particles-js"></div>
+    
+    <!-- ========================================================= -->
+    <!-- Top Navigation -->
+    <!-- ========================================================= -->
+    <header class="top-nav">
+      <div class="nav-left">
+        <a href="index.html" class="home-path">esau@home ~ $</a>
+      </div>
+      <div class="nav-right">
+        <a href="projects.html">Projects</a>
+        <a href="publications.html">Publications</a>
+        <a href="files/Casimiro Vieyra - CV.pdf">CV</a>
+      </div>
+    </header>
+    
+    <!-- ========================================================= -->
+    <!-- Fixed Header for Publications -->
+    <!-- ========================================================= -->
+    <header class="fixed-header">
+      <h1>Publications</h1>
+    </header>
+    
+    <!-- ========================================================= -->
+    <!-- Main Content -->
+    <!-- ========================================================= -->
+    <main>
+      <section class="publications">
+        <div class="accordion-content">
+          <!-- --------------------------------------------------------- -->
+          <!-- Peer Reviewed Publications -->
+          <!-- --------------------------------------------------------- -->
+          <details>
+            <summary>Peer Reviewed</summary>
+            <ul class="publication-list">
+              <li>
+                <div class="pub-title">
+                  &bull; Latinx Immigrant Health:
+                  Does Immigrants’ Perceptions of Integration Protect their Health?
+                </div>
+                <div class="pub-meta">
+                  Mirella Deniz-Zaragoza, Esaú Casimiro Vieyra, Cecilia Ayón | Hispanic Journal of Behavioral Sciences, 2024 | 
+                  <span class="doi-text">
+                    DOI: 
+                    <a href="https://doi.org/10.1177/07399863241274168" target="_blank">
+                      https://doi.org/10.1177
+                    </a>
+                  </span>
+                </div>
+              </li>
+              <!-- Additional Peer Reviewed Entries -->
+            </ul>
+          </details>
+          
+          <!-- --------------------------------------------------------- -->
+          <!-- Book Chapters -->
+          <!-- --------------------------------------------------------- -->
+          <details>
+            <summary>Book Chapters</summary>
+            <ul class="publication-list">
+              <li>
+                <div class="pub-title">
+                  &bull; Teaching and learning about Geo-Social determinants of health.
+                </div>
+                <div class="pub-meta">
+                  Sigrid Van Den Abbeele, Dan Grafton, Madison Avila, Esaú Casimiro Vieyra, Brianna Chan, Gabrielle Husted, Sofia Kaloper, Ben Moscona, Susan Cassels | In M. Kolak & I. Moise (Eds.) - Place & the social-spatial determinants of health. | 
+                  <span class="doi-text">
+                    In Press.
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </details>
+          
+          <!-- --------------------------------------------------------- -->
+          <!-- Reports -->
+          <!-- --------------------------------------------------------- -->
+          <details>
+            <summary>Reports</summary>
+            <ul class="publication-list">
+              <li>
+                <div class="pub-title">
+                  &bull; Sanctuary City Policies: A mechanism for reducing mental health inequalities faced by Latinxs?
+                </div>
+                <div class="pub-meta">
+                  Tanya Nieri, Cecilia Ayón, Maithili Ramachandran, Esaú Casimiro Vieyra, Tim Bruckner, and Bruce Link | UCR School of Public Policy, 2023 |
+                  <span class="doi-text">
+                    <a href="https://drive.google.com/file/d/1FvegLf4rTsY_dbEv6mN-G9N7GklRp4eP/view" target="_blank">
+                      PDF
+                    </a>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="pub-title">
+                  &bull; State of Nonprofits in the Inland Empire.
+                </div>
+                <div class="pub-meta">
+                  Center for Social Innovation at the University of California, Riverside. State of the Inland Empire Series, 2020 | 
+                  <span class="doi-text">
+                    <a href="https://socialinnovation.ucr.edu/state-nonprofits-inland-empire" target="_blank">
+                      URL
+                    </a>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="pub-title">
+                  &bull; State of Civic Engagement in the Inland Empire.
+                </div>
+                <div class="pub-meta">
+                  Center for Social Innovation at the University of California, Riverside. State of the Inland Empire Series, 2019 | 
+                  <span class="doi-text">
+                    <a href="https://socialinnovation.ucr.edu/state-civic-engagement-inland-empire" target="_blank">
+                      URL
+                    </a>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="pub-title">
+                  &bull; State of Women in the Inland Empire.
+                </div>
+                <div class="pub-meta">
+                  Center for Social Innovation at the University of California, Riverside. State of the Inland Empire Series, 2019 | 
+                  <span class="doi-text">
+                    <a href="https://socialinnovation.ucr.edu/state-women-inland-empire" target="_blank">
+                      URL
+                    </a>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </details>
+          
+          <!-- --------------------------------------------------------- -->
+          <!-- Under Review & Working Papers -->
+          <!-- --------------------------------------------------------- -->
+          <details>
+            <summary>Under Review & Working Papers</summary>
+            <ul class="publication-list">
+              <li>
+                <div class="pub-title">
+                  &bull; The importance of context and spatial scale when measuring health outcomes in Latino destinations: Evidence from a replication of Maldonado et al. (2023).
+                </div>
+                <div class="pub-meta">
+                  Sofia Kaloper, Esaú Casimiro Vieyra, Peter Kedron, Brianna Chan, Yuyan Che, Lily Heidger, Hannah Malak, Nelmary Rodríguez Sepúlveda, Dylan Skrah, Pratyush Tripathy, Zhongqi Zheng | 
+                  <span class="doi-text">
+                    Under Review
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="pub-title">
+                  &bull; Immigrants in California: A Study on Latinxs' Perception on Immigrant Integration and Inclusion.
+                </div>
+                <div class="pub-meta">
+                  Esaú Casimiro Vieyra, Mirella Deniz-Zaragoza, Cecilia Ayón | 
+                  <span class="doi-text">
+                    Working Paper
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </details>
+          <!-- Additional Accordion Entries as Needed -->
+        </div>
+      </section>
+    </main>
+    
+    <!-- ========================================================= -->
+    <!-- Footer -->
+    <!-- ========================================================= -->
+    <footer>
+      <p>&copy; 2025 Esaú Casimiro Vieyra</p>
+    </footer>
+    
+    <!-- ========================================================= -->
+    <!-- External Scripts -->
+    <!-- ========================================================= -->
+    <!-- Load Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": { "enable": true, "value_area": 800 }
+          },
+          "color": { "value": "#666666" },
+          "shape": { "type": "circle" },
+          "opacity": { "value": 0.4, "random": false },
+          "size": { "value": 3, "random": true },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#999999",
+            "opacity": 0.3,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": { "enable": true, "mode": "grab" },
+            "onclick": { "enable": true, "mode": "push" },
+            "resize": true
+          },
+          "modes": {
+            "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+            "push": { "particles_nb": 4 }
+          }
+        },
+        "retina_detect": true
+      });
+    </script>
+  </body>
+</html>

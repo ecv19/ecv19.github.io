@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ========================================================= -->
+    <!-- Meta Information & Document Setup -->
+    <!-- ========================================================= -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects</title>
+
+    <!-- ========================================================= -->
+    <!-- Google Fonts -->
+    <!-- ========================================================= -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Share&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ========================================================= -->
+    <!-- FontAwesome for Icons -->
+    <!-- ========================================================= -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- ========================================================= -->
+    <!-- External CSS -->
+    <!-- ========================================================= -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ========================================================= -->
+    <!-- Particle Background Container -->
+    <!-- ========================================================= -->
+    <div id="particles-js"></div>
+
+    <!-- ========================================================= -->
+    <!-- Top Navigation -->
+    <!-- ========================================================= -->
+    <header>
+      <div class="nav-left">
+        <a href="index.html" class="home-path">esau@home ~ $</a>
+      </div>
+      <div class="nav-right">
+        <a href="projects.html">Projects</a>
+        <a href="publications.html">Publications</a>
+        <a href="files/Casimiro Vieyra - CV.pdf">CV</a>
+      </div>
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- Main Content -->
+    <!-- ========================================================= -->
+    <main>
+      <div class="projects-intro">
+        <h1>Projects</h1>
+        <p>
+          My research integrates perspectives from geography, demography, GIScience,
+          and public health to examine spatial dimensions of migration, health
+          disparities, and scale. I apply spatial and computational methods to
+          analyze complex patterns of mobility, neighborhood context, and population
+          health. Below are some of the projects and open-source packages I have
+          developed or contributed to:
+        </p>
+      </div>
+
+      <section class="projects-container">
+        <!-- --------------------------------------------------------- -->
+        <!-- Project Card 1 -->
+        <!-- --------------------------------------------------------- -->
+        <div class="project-card">
+          <div class="project-title">Origin-Destination Dyads</div>
+          <div class="project-image-container">
+            <img src="images/typology.png" alt="Project 1" />
+          </div>
+          <p class="project-description">
+            This project updates traditional regional categorizations of Mexican migrant origin states. By using contemporary migration data from Mexico to the U.S., we developed an updated origin categorization at the state level and linked it to a U.S. state destination to create a dyad migration flow.
+          </p>
+          <a href="project1-details.html" class="more-button">More</a>
+        </div>
+
+        <!-- --------------------------------------------------------- -->
+        <!-- Project Card 2 -->
+        <!-- --------------------------------------------------------- -->
+        <div class="project-card">
+          <div class="project-title">geoplanar</div>
+          <div class="project-image-container">
+            <img src="images/geoplanar.png" alt="Project 2" />
+          </div>
+          <p class="project-description">
+            Planar enforcement for polygon geoseries. geoplanar supports the detection and correction of violations of planar enforcement for polygon geoseries.
+          </p>
+          <a href="https://github.com/sjsrey/geoplanar" class="more-button">More</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- Footer -->
+    <!-- ========================================================= -->
+    <footer>
+      <p>&copy; 2025 Esaú Casimiro Vieyra</p>
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- External Scripts -->
+    <!-- ========================================================= -->
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#666666"
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.4,
+            "random": false
+          },
+          "size": {
+            "value": 3,
+            "random": true
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#999999",
+            "opacity": 0.3,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 140,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+    </script>
+  </body>
+</html>

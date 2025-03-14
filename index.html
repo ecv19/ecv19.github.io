@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ========================================================= -->
+    <!-- Meta Information -->
+    <!-- ========================================================= -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ========================================================= -->
+    <!-- Google Fonts -->
+    <!-- ========================================================= -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Share&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ========================================================= -->
+    <!-- FontAwesome for Icons -->
+    <!-- ========================================================= -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- ========================================================= -->
+    <!-- External CSS File -->
+    <!-- ========================================================= -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ========================================================= -->
+    <!-- Particle Background Container -->
+    <!-- ========================================================= -->
+    <div id="particles-js"></div>
+
+    <!-- ========================================================= -->
+    <!-- Top Navigation -->
+    <!-- ========================================================= -->
+    <header>
+      <div class="nav-left">
+        <a href="index.html" class="home-path">esau@home ~ $</a>
+      </div>
+      <div class="nav-right">
+        <a href="projects.html">Projects</a>
+        <a href="publications.html">Publications</a>
+        <a href="files/Casimiro Vieyra - CV.pdf">CV</a>
+      </div>
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- Main Content -->
+    <!-- ========================================================= -->
+    <main>
+      <!-- --------------------------------------------------------- -->
+      <!-- Intro Section with Image and Text -->
+      <!-- --------------------------------------------------------- -->
+      <div class="intro">
+        <div class="intro-image">
+          <img src="images/headshoot.jpg" alt="Profile Photo" />
+        </div>
+        <div class="intro-text">
+          <h1>Welcome!</h1>
+          <p>
+            I am a third-year Ph.D. student in the
+            <a
+              href="https://www.geog.ucsb.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="custom-link"
+            >
+              Department of Geography
+            </a>
+            at the University of California, Santa Barbara. My broad interests lie at
+            the intersection of migration, population health, policy, and spatial data
+            science.
+          </p>
+          <p>
+            My dissertation examines the spatiotemporal dynamics of migration between
+            Mexico and the U.S., the role of geographic scale in understanding Latino
+            health disparities, and how neighborhood disadvantage and mobility influence
+            health trajectories over the life course.
+          </p>
+          <p>
+            I am also a member of the Population Health in Geography research group and
+            a Graduate Associate of the
+            <a
+              href="https://broomcenter.ucsb.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="custom-link"
+            >
+              Broom Center for Demography
+            </a>
+            at UC Santa Barbara.
+          </p>
+        </div>
+      </div>
+
+      <!-- --------------------------------------------------------- -->
+      <!-- Social Links -->
+      <!-- --------------------------------------------------------- -->
+      <div class="social-links">
+        <a href="https://github.com/ecv19" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/esa%C3%BA-casimiro-vieyra-b65a9118a/"
+          title="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:ecasimirovieyra@ucsb.edu" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://orcid.org/0000-0002-2335-6961" title="ORCID">
+          <i class="fab fa-orcid"></i>
+        </a>
+        <a href="https://www.geog.ucsb.edu/" title="UCSB Geography">
+          <i class="fas fa-university"></i>
+        </a>
+        <a
+          href="https://scholar.google.com/citations?user=vweykj0AAAAJ&hl=en&authuser=2"
+          title="Google Scholar"
+        >
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+      </div>
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- Footer -->
+    <!-- ========================================================= -->
+    <footer>
+      <p>&copy; 2025 Esaú Casimiro Vieyra</p>
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- External Scripts -->
+    <!-- ========================================================= -->
+    <!-- Load Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#666666"
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.4,
+            "random": false
+          },
+          "size": {
+            "value": 3,
+            "random": true
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#999999",
+            "opacity": 0.3,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 140,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+    </script>
+  </body>
+</html>
